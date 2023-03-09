@@ -12,7 +12,7 @@ Just use the `CardTools` class that contains:
 * `GetCardParsers(string)`
 * `GetCardParsers(StreamReader)`
 
-These functions return the list of card parsers in case multiple contacts are spotted. This is useful to parse each individual contact with `Parse()` in each individual `BaseVcardParser` instance for said contact and to save to contact file by `Save(string)`.
+These functions return the list of card parsers in case multiple contacts are spotted. This is useful to parse each individual contact with `Parse()` in each individual `BaseVcardParser` instance for said contact.
 
 `Parse()` must be called on the individual parser to return a `Card` instance that holds information about the contact, including:
 
@@ -42,6 +42,8 @@ These functions return the list of card parsers in case multiple contacts are sp
 | `TZ`          | ●         | ●         | ●         |
 | `GEO`         | ●         | ●         | ●         |
 | `X-NAME`      | ●         | ●         | ●         |
+
+To save contacts, call the `Save()` function on a `Card` instance that holds information about a contact you want to save.
 
 {% hint style="info" %}
 On VCard 4.0, ALTID is supported on all the compatible types.
