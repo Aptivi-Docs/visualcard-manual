@@ -41,6 +41,7 @@ These functions return the list of card parsers in case multiple contacts are sp
 | `SORT-STRING` |           | ●         | ●         |
 | `TZ`          | ●         | ●         | ●         |
 | `GEO`         | ●         | ●         | ●         |
+| `IMPP`        | ●         | ●         | ●         |
 | `X-NAME`      | ●         | ●         | ●         |
 
 To save contacts, call the `Save()` function on a `Card` instance that holds information about a contact you want to save.
