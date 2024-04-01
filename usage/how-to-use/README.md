@@ -107,19 +107,23 @@ In order to parse MeCard strings, you'll have to use the `GetContactsFromMeCardS
 
 This converter supports about anything a MeCard contact can have. Here are the supported types:
 
-| MeCard     | VCard 3.0  |
-| ---------- | ---------- |
-| `ADR`      | `ADR`      |
-| `BDAY`     | `BDAY`     |
-| `EMAIL`    | `EMAIL`    |
-| `N`        | `N`        |
-| `NICKNAME` | `NICKNAME` |
-| `NOTE`     | `NOTE`     |
-| `TEL`      | `TEL`      |
-| `URL`      | `URL`      |
+| MeCard     | VCard 3.0           |
+| ---------- | ------------------- |
+| `ADR`      | `ADR`               |
+| `BDAY`     | `BDAY`              |
+| `EMAIL`    | `EMAIL`             |
+| `N`        | `N`                 |
+| `NICKNAME` | `NICKNAME`          |
+| `NOTE`     | `NOTE`              |
+| `SOUND`    | `X-VISUALCARD-KANA` |
+| `TEL`      | `TEL`               |
+| `TEL-AV`   | `TEL;TYPE=VIDEO`    |
+| `URL`      | `URL`               |
 
 {% hint style="info" %}
-This converter can't convert `TEL-AV` and `SOUND` types. `SOUND` on MeCard was defined as:
+`SOUND` on MeCard is defined in Japanese phonebooks as:
 
 _Designates a text string to be set as the kana name in the phonebook._
+
+As there is no native equivalent of **Kana Name** in any of the vCard specifications, such as `KANA:[...]`, you can access this value after the conversion using the `X-VISUALCARD-KANA` property.
 {% endhint %}
