@@ -4,8 +4,9 @@
 
 ## Usage
 
-* [🖥 How to use](usage/how-to-use.md)
-* [⚒ How it works](usage/how-it-works.md)
+* [🖥️ How to use](usage/how-to-use/README.md)
+  * [🧩 Card Parts](usage/how-to-use/card-parts.md)
+* [⚒️ How it works](usage/how-it-works.md)
 
 ***
 

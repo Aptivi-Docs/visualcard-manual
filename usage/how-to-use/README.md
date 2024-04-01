@@ -2,27 +2,30 @@
 description: How do you use it?
 ---
 
-# 🖥 How to use
+# 🖥️ How to use
 
 Using this library is very simple! Just use the `VisualCard` namespace in any piece of code you want to use the library, as in: `using VisualCard;`
 
 Just use the `CardTools` class that contains:
 
-* `GetCardParsersFromString(string)`
-* `GetCardParsers(string)`
-* `GetCardParsers(StreamReader)`
+* `GetCardsFromString(string)`
+* `GetCards(string)`
+* `GetCards(StreamReader)`
 
-These functions return the list of card parsers in case multiple contacts are spotted. This is useful to parse each individual contact with `Parse()` in each individual `BaseVcardParser` instance for said contact.
+These functions return the list of cards from multiple contacts that may be detected by the vCard parser. When parsing is done, it returns an array of `Card` instances that hold information about the contact. You can consult the supported parts in the below page:
 
-`Parse()` must be called on the individual parser to return a `Card` instance that holds information about the contact, including (listed are all vCard versions supported by VisualCard):
-
-<table><thead><tr><th width="293.8193359375">Key</th><th width="67.41119384765625">2.1</th><th width="66">3.0</th><th width="69">4.0</th><th>5.0</th></tr></thead><tbody><tr><td><code>KIND</code></td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>N</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>FN</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>TEL</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>ADR</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>EMAIL</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>ORG</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>TITLE</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>URL</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>NOTE</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>PHOTO</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>LOGO</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SOUND</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>REV</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>NICKNAME</code></td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>BDAY</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>MAILER</code></td><td>●</td><td>●</td><td></td><td>●</td></tr><tr><td><code>ROLE</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>PRODID</code></td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SORT-STRING</code></td><td></td><td>●</td><td></td><td>●</td></tr><tr><td><code>TZ</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>GEO</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>IMPP</code></td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SOURCE</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>XML</code></td><td></td><td></td><td>●</td><td></td></tr><tr><td><code>FBURL</code></td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>CALURI</code></td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>CALADRURI</code></td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>X-NAME</code></td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>AGENT</code></td><td>●</td><td>●</td><td></td><td>●</td></tr></tbody></table>
+{% content-ref url="card-parts.md" %}
+[card-parts.md](card-parts.md)
+{% endcontent-ref %}
 
 {% hint style="info" %}
 VisualCard officially supports the vCard 5.0 specification, which can be found [here](https://github.com/Aptivi/VisualCard/blob/main/VisualCard/Specs/vcard-50-aptivi.txt).
 {% endhint %}
 
-To save contacts, call the `Save()` function on a `Card` instance that holds information about a contact you want to save.
+To save contacts, call the `SaveTo()` function on a `Card` instance that holds information about a contact you want to save. Currently, it allows you to specify the method of saving:
+
+* `SaveTo()`: Saves this contact to a file path
+* `SaveToString()`: Saves this contact to a string representation
 
 {% hint style="info" %}
 On VCard 4.0 and 5.0, `ALTID` is supported on all the compatible types.
@@ -66,18 +69,14 @@ _**Unlocking the bootloader may cause your user data to be wiped.**_
 _**In some cases, your device might fail to boot to Android if done incorrectly.**_
 {% endhint %}
 
-`GetContactsFromDb()` returns a list of base VCard parsers that can be parsed by calling the `Parse()` function on them. Usually, you can just enumerate through all the base parsers to get contact information about all of them.
-
-Below is an example of how to extract VCard parsers and parse them from Android's `contacts2.db`:
+`GetContactsFromDb()` returns a list of parsed vCard card instance classes. Below is an example of how to parse vCard contacts from Android's `contacts2.db`:
 
 ```csharp
-List<Card> Contacts = new();
-List<BaseVcardParser> ContactParsers = AndroidContactsDb.GetContactsFromDb(args[0]);
-foreach (BaseVcardParser ContactParser in ContactParsers)
-{
-    Card Contact = ContactParser.Parse();
-    Contacts.Add(Contact);
-}
+// If you already have contacts2.db somewhere in your computer
+Card[] contactsSpecific = AndroidContactsDb.GetContactsFromDb(args[0]);
+
+// If you're running rooted Android and you need to parse from the system path
+Card[] contactsSystem = AndroidContactsDb.GetContactsFromDb();
 ```
 
 Below are the supported contact elements for the conversion (found under the `vnd.android.cursor.item` group):
@@ -96,11 +95,15 @@ Below are the supported contact elements for the conversion (found under the `vn
 | `note`              | `NOTE`                                      |
 | `photo`             | `PHOTO`                                     |
 
+{% hint style="danger" %}
+Unless you implement some kind of root checker in your application and have a reason to parse contacts the root way, we advice you to use built-in Android functions within your code using [ContactsContract.Contacts](https://learn.microsoft.com/en-us/dotnet/api/android.provider.contactscontract.contacts).
+{% endhint %}
+
 #### MeCard strings
 
 MeCard is commonly used for scannable contacts, usually generated by the QR code generators. This is typically used so that smartphone owners can easily scan the contact's QR code to add the contact to the phone. This is faster than a person manually typing their phone number and their details on a pen and a paper.
 
-In order to parse MeCard strings, you'll have to use the `GetContactsFromMeCardString()` function found in the `MeCard` class. Like the above converter, you'll have to manually call `Parse()` on each base VCard parser so that you can get contact information on a VCard class.
+In order to parse MeCard strings, you'll have to use the `GetContactsFromMeCardString()` function found in the `MeCard` class. Like the above converter, you can get contact information on a vCard class instantly.
 
 This converter supports about anything a MeCard contact can have. Here are the supported types:
 
