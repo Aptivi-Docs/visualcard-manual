@@ -25,7 +25,9 @@ VisualCard appends the card version to the `CardVersion` property of the parser.
 
 Once the ending tag is seen, VisualCard creates a new instance of the `VcardParser` class containing necessary functions to parse the contact, which causes this library to call `Parse()` on the individual contact parser instance which attempts to process all the keys found in the card content, `CardContent`.
 
-The parser first checks to see if the card content is not empty to verify that the builder works right. Once these checks were made, the parser processes each key found. In VCard 4.0 and 5.0, VisualCard takess the ALTID for each supported key with their own cardinality into account.
+The parser first checks to see if the card content is not empty to verify that the builder works right. Once these checks were made, the parser processes each key found. In VCard 4.0 and 5.0, VisualCard takes the ALTID for each supported key with their own cardinality into account. The main ALTID for all the properties is `-1`.
+
+Then, the parser checks the type to see if it is supported by each property type. If the required type is not found, the parser fails. Some of the property types support extra types, such as postal address, IBM Mail e-mail address, and so on.
 
 Once the parser finishes installing all the values from all the supported keys, VisualCard checks for the below requirements:
 
@@ -34,7 +36,7 @@ Once the parser finishes installing all the values from all the supported keys, 
 | vCard 2.1 | ●        |                |
 | vCard 3.0 | ●        | ●              |
 | vCard 4.0 |          | ●              |
-| vCard 5.0 |          |                |
+| vCard 5.0 | ●        | ●              |
 
 If the requirements are met, VisualCard returns a new `Card` instance that you can fetch its values from using one of the following methods:
 
