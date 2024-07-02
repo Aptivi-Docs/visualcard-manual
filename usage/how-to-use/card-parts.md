@@ -114,3 +114,15 @@ This function returns one of the following:
 {% hint style="danger" %}
 Any attempt to specify an incorrect type or enumeration in the second overload of `GetPartsArray`, such as `Contact.GetPartsArray<AddressInfo>(PartsArrayEnum.Telephone)`, will throw an exception. However, it doesn't throw an exception in case `BaseCardPartInfo` is specified.
 {% endhint %}
+
+For preferred parts, their value of the `IsPreferred` property is true, assuming that the `PREF` type exists in such parts.
+
+## Getting a Blob Stream
+
+Image parts, icon parts, sound parts, and key parts in a vCard instance allow you to get a blob stream from the encoded data that allows you to represent the actual data decoded from the BASE64 encoding as a blob. VisualCard exposes this feature to allow you to perform various operations on them, such as displaying contact pictures, saving sound parts as sound files, etc.
+
+You can make use of this feature by invoking the `GetBlobData()` function from the `VcardParserTools` class.
+
+{% hint style="danger" %}
+This feature doesn't support non-blob values, such as an HTTPS URL to a logo file.
+{% endhint %}
