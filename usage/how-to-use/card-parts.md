@@ -11,45 +11,7 @@ Normally, cards in VisualCard have three types of parts that define a contact:
 
 In the current version of VisualCard, the following parts are supported:
 
-| Key           | Type   | 2.1 | 3.0 | 4.0 | 5.0 |
-| ------------- | ------ | --- | --- | --- | --- |
-| `KIND`        | String |     |     | ●   | ●   |
-| `N`           | Array  | ●   | ●   | ●   | ●   |
-| `FN`          | Array  | ●   | ●   | ●   | ●   |
-| `TEL`         | Array  | ●   | ●   | ●   | ●   |
-| `ADR`         | Array  | ●   | ●   | ●   | ●   |
-| `EMAIL`       | Array  | ●   | ●   | ●   | ●   |
-| `ORG`         | Array  | ●   | ●   | ●   | ●   |
-| `TITLE`       | Array  | ●   | ●   | ●   | ●   |
-| `URL`         | Array  | ●   | ●   | ●   | ●   |
-| `NOTE`        | Array  | ●   | ●   | ●   | ●   |
-| `PHOTO`       | Array  | ●   | ●   | ●   | ●   |
-| `LOGO`        | Array  | ●   | ●   | ●   | ●   |
-| `SOUND`       | Array  | ●   | ●   | ●   | ●   |
-| `REV`         | Array  | ●   | ●   | ●   | ●   |
-| `NICKNAME`    | Array  |     | ●   | ●   | ●   |
-| `BDAY`        | Array  | ●   | ●   | ●   | ●   |
-| `MAILER`      | String | ●   | ●   |     | ●   |
-| `ROLE`        | Array  | ●   | ●   | ●   | ●   |
-| `CATEGORIES`  | Array  | ●   | ●   | ●   | ●   |
-| `PRODID`      | String |     | ●   | ●   | ●   |
-| `SORT-STRING` | String |     | ●   |     | ●   |
-| `TZ`          | Array  | ●   | ●   | ●   | ●   |
-| `GEO`         | Array  | ●   | ●   | ●   | ●   |
-| `IMPP`        | Array  |     | ●   | ●   | ●   |
-| `SOURCE`      | Array  | ●   | ●   | ●   | ●   |
-| `XML`         | Array  |     |     | ●   |     |
-| `FBURL`       | Array  |     |     | ●   | ●   |
-| `CALURI`      | Array  |     |     | ●   | ●   |
-| `CALADRURI`   | Array  |     |     | ●   | ●   |
-| `X-NAME`      | Array  | ●   | ●   | ●   | ●   |
-| `AGENT`       | Array  | ●   | ●   |     | ●   |
-| `ANNIVERSARY` | Array  |     |     | ●   | ●   |
-| `GENDER`      | Array  |     |     | ●   | ●   |
-| `LANG`        | Array  |     |     | ●   | ●   |
-| `KEY`         | Array  | ●   | ●   | ●   | ●   |
-| `LABEL`       | Array  | ●   | ●   |     | ●   |
-| `CLASS`       | String |     | ●   |     | ●   |
+<table><thead><tr><th width="295">Key</th><th width="170">Type</th><th width="59">2.1</th><th width="65">3.0</th><th width="60">4.0</th><th>5.0</th></tr></thead><tbody><tr><td><code>KIND</code></td><td>String</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>N</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>FN</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>TEL</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>ADR</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>EMAIL</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>ORG</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>TITLE</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>URL</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>NOTE</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>PHOTO</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>LOGO</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SOUND</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>REV</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>NICKNAME</code></td><td>Array</td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>BDAY</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>MAILER</code></td><td>String</td><td>●</td><td>●</td><td></td><td>●</td></tr><tr><td><code>ROLE</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>PRODID</code></td><td>String</td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SORT-STRING</code></td><td>String</td><td></td><td>●</td><td></td><td>●</td></tr><tr><td><code>TZ</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>GEO</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>IMPP</code></td><td>Array</td><td></td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>SOURCE</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>XML</code></td><td>Array</td><td></td><td></td><td>●</td><td></td></tr><tr><td><code>FBURL</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>CALURI</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>CALADRURI</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>X-NAME</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>AGENT</code></td><td>Array</td><td>●</td><td>●</td><td></td><td>●</td></tr><tr><td><code>ANNIVERSARY</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>GENDER</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>LANG</code></td><td>Array</td><td></td><td></td><td>●</td><td>●</td></tr><tr><td><code>KEY</code></td><td>Array</td><td>●</td><td>●</td><td>●</td><td>●</td></tr><tr><td><code>LABEL</code></td><td>Array</td><td>●</td><td>●</td><td></td><td>●</td></tr><tr><td><code>CLASS</code></td><td>String</td><td></td><td>●</td><td></td><td>●</td></tr><tr><td><code>UID</code></td><td>String</td><td>●</td><td>●</td><td>●</td><td></td></tr></tbody></table>
 
 The following base types by all the properties that can be put into arrays are supported:
 
@@ -125,4 +87,12 @@ You can make use of this feature by invoking the `GetBlobData()` function from t
 
 {% hint style="danger" %}
 This feature doesn't support non-blob values, such as an HTTPS URL to a logo file.
+{% endhint %}
+
+## Nested cards
+
+Sometimes, you may come across a vCard file that consists of multiple nested vCards. This, accompanied with the `UID` property, can be connected so that you can make relationships with cards. You can easily access all children cards within a property in your `Card` instance using a property called `NestedCards`. You can easily access the UID of a card via a `UniqueId` property.
+
+{% hint style="warning" %}
+When no `UID` property is specified in the vCard file, it's empty, so it's assumed to have no relationship with any card. Even if they have no UID, they can be nested.
 {% endhint %}
