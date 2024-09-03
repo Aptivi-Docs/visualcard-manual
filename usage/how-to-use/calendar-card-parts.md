@@ -1,12 +1,13 @@
 ---
-description: How do the card parts work in VisualCard?
+description: How do the calendar card parts work in VisualCard?
 ---
 
-# 🧩 Card Parts
+# 📅 Calendar Card Parts
 
-Normally, cards in VisualCard have two types of parts that define a contact:
+Normally, calendar cards in VisualCard have three types of parts that define a calendar:
 
 * Strings (`GetString()`)
+* Integers (`GetInteger()`)
 * Array of parts (`GetPartsArray()`)
 
 In the current version of VisualCard, the following parts are supported:
@@ -17,42 +18,47 @@ The following base types by all the properties that can be put into arrays are s
 
 * `HOME`, `WORK`, and `PREF`
 * `X-nonstandard` types
-* Extra types supported by some properties, such as `ADR` and `TEL`
-
-Here are the extra types that the following properties support:
-
-<table><thead><tr><th width="128">Property</th><th>Types</th></tr></thead><tbody><tr><td><code>TEL</code></td><td>"<code>TEXT</code>", "<code>VOICE</code>", "<code>FAX</code>", "<code>CELL</code>", "<code>VIDEO</code>", "<code>PAGER</code>", "<code>TEXTPHONE</code>", "<code>ISDN</code>", "<code>CAR</code>", "<code>MODEM</code>", "<code>BBS</code>", "<code>MSG</code>", "<code>PREF</code>", "<code>TLX</code>", "<code>MMS</code>"</td></tr><tr><td><code>ADR</code></td><td>"<code>DOM</code>", "<code>INTL</code>", "<code>PARCEL</code>", "<code>POSTAL</code>"</td></tr><tr><td><code>LABEL</code></td><td>"<code>DOM</code>", "<code>INTL</code>", "<code>PARCEL</code>", "<code>POSTAL</code>"</td></tr><tr><td><code>EMAIL</code></td><td>"<code>AOL</code>", "<code>APPLELINK</code>", "<code>ATTMAIL</code>", "<code>CIS</code>", "<code>EWORLD</code>", "<code>INTERNET</code>", "<code>IBMMAIL</code>", "<code>MCIMAIL</code>", "<code>POWERSHARE</code>", "<code>PRODIGY</code>", "<code>TLX</code>", "<code>X400</code>", "<code>CELL</code>"</td></tr><tr><td><code>PHOTO</code></td><td>"<code>JPG</code>", "<code>GIF</code>", "<code>CGM</code>", "<code>WMF</code>", "<code>BMP</code>", "<code>MET</code>", "<code>PMB</code>", "<code>DIB</code>", "<code>PICT</code>", "<code>TIFF</code>", "<code>PS</code>", "<code>PDF</code>", "<code>JPEG</code>", "<code>MPEG</code>", "<code>MPEG2</code>", "<code>AVI</code>", "<code>QTIME</code>", "<code>PNG</code>", "<code>WEBP</code>"</td></tr><tr><td><code>LOGO</code></td><td>"<code>JPG</code>", "<code>GIF</code>", "<code>CGM</code>", "<code>WMF</code>", "<code>BMP</code>", "<code>MET</code>", "<code>PMB</code>", "<code>DIB</code>", "<code>PICT</code>", "<code>TIFF</code>", "<code>PS</code>", "<code>PDF</code>", "<code>JPEG</code>", "<code>MPEG</code>", "<code>MPEG2</code>", "<code>AVI</code>", "<code>QTIME</code>", "<code>PNG</code>", "<code>WEBP</code>"</td></tr><tr><td><code>SOUND</code></td><td>"<code>MP3</code>", "<code>WAVE</code>", "<code>PCM</code>", "<code>AIFF</code>", "<code>AAC</code>"</td></tr><tr><td><code>IMPP</code></td><td>"<code>SIP</code>"</td></tr></tbody></table>
 
 The below sections describe how exactly to parse all the supported types.
 
 ## Strings
 
-Strings in vCard and VisualCard are the simplest of the types that allow you to input just text that represent that property. The above table shows all the properties, and those that are listed as a String, such as `CLASS`, can be get as a string using a function called `GetString()`.
+Strings in vCalendar and VisualCard are the simplest of the types that allow you to input just text that represent that property. The above table shows all the properties, and those that are listed as a String, such as `CLASS`, can be get as a string using a function called `GetString()`.
 
 This function returns one of the following strings:
 
 * **An empty string**
-  * If the string is not supported in the contact's vCard version.
-  * If the string is not defined in the contact's vCard instance.
+  * If the string is not supported in the calendar's vCalendar version.
+  * If the string is not defined in the calendar's vCalendar instance.
   * If the string is explicitly blank.
-* **"individual"**
-  * If the string is not defined in the contact's vCard 4.0 or 5.0 kind.
-  * If the string is explicitly "individual" in the contact's vCard 4.0 or 5.0 kind.
 * **A string value**
   * If the string is defined, supported, and is not empty.
 
+## Integers
+
+Integers in vCalendar and VisualCard are the simplest of the types that allow you to input just a number that represents that property. The above table shows all the properties, and those that are listed as an Integer, such as `PRIORITY`, can be get as an integer using a function called `GetInteger()`.
+
+This function returns one of the following integers:
+
+* **-1**
+  * If the integer is not supported in the contact's vCard version.
+  * If the integer is not defined in the contact's vCard instance.
+  * If the integer is specified as -1
+* **An integer value**
+  * If the integer is defined and supported.
+
 ## Array of Parts
 
-Parts that can be more than one part (i.e. can be put to an array and can exist more than once per vCard instance) exist in vCard. The above table shows all the properties that are listed as an Array. If they are listed as such, like `TEL`, you can get it using `GetPartsArray()`.
+Parts that can be more than one part (i.e. can be put to an array and can exist more than once per vCard instance) exist in vCard. The above table shows all the properties that are listed as an Array. If they are listed as such, like `ATTENDEE`, you can get it using `GetPartsArray()`.
 
-`GetPartsArray()` is a generic method. This means that you can specify one of the `Info` classes, as long as it represents a valid class that points to a valid part, such as `TelephoneInfo`. In this case, you'll have to call it like this:
+`GetPartsArray()` is a generic method. This means that you can specify one of the `Info` classes, as long as it represents a valid class that points to a valid part, such as `AttendeeInfo`. In this case, you'll have to call it like this:
 
 ```csharp
 // Either
-Contact.GetPartsArray<TelephoneInfo>()
+Calendar.Events[0].GetPartsArray<AttendeeInfo>()
 
 // or
-Contact.GetPartsArray<TelephoneInfo>(PartsArrayEnum.Telephone)
+Calendar.Events[0].GetPartsArray<AttendeeInfo>(CalendarPartsArrayEnum.Attendee)
 ```
 
 You can directly get a value of a property without having to cast the resultant part to the correct part info class. The same base properties also apply to the normal Parts.
@@ -61,7 +67,7 @@ You can directly get a value of a property without having to cast the resultant 
 You can also get any parts array as a base, though you can't call the non-parameterized function against the base part, `BaseCardPartInfo`. You'll also have to cast the resultant part if you need to access something other than the base properties as mentioned above.
 
 ```csharp
-Contact.GetPartsArray<BaseCardPartInfo>(PartsArrayEnum.Telephone)
+Calendar.Events[0].GetPartsArray<BaseCardPartInfo>(CalendarPartsArrayEnum.Attendee)
 ```
 {% endhint %}
 
@@ -74,25 +80,15 @@ This function returns one of the following:
   * If the part is supported and defined in the contact's vCard instance
 
 {% hint style="danger" %}
-Any attempt to specify an incorrect type or enumeration in the second overload of `GetPartsArray`, such as `Contact.GetPartsArray<AddressInfo>(PartsArrayEnum.Telephone)`, will throw an exception. However, it doesn't throw an exception in case `BaseCardPartInfo` is specified.
+Any attempt to specify an incorrect type or enumeration in the second overload of `GetPartsArray`, such as `Calendar.Events[0].GetPartsArray<DateCreatedInfo>(CalendarPartsArrayEnum.Attendee)`, will throw an exception. However, it doesn't throw an exception in case `BaseCardPartInfo` is specified.
 {% endhint %}
-
-For preferred parts, their value of the `IsPreferred` property is true, assuming that the `PREF` type exists in such parts.
 
 ## Getting a Blob Stream
 
-Image parts, icon parts, sound parts, and key parts in a vCard instance allow you to get a blob stream from the encoded data that allows you to represent the actual data decoded from the BASE64 encoding as a blob. VisualCard exposes this feature to allow you to perform various operations on them, such as displaying contact pictures, saving sound parts as sound files, etc.
+Image parts, icon parts, sound parts, and key parts in a vCalendar instance allow you to get a blob stream from the encoded data that allows you to represent the actual data decoded from the BASE64 encoding as a blob. VisualCard exposes this feature to allow you to perform various operations on them, such as displaying calendar attachments, saving sound attachments as sound files, etc.
 
 You can make use of this feature by invoking the `GetBlobData()` function from the `VcardParserTools` class.
 
 {% hint style="danger" %}
 This feature doesn't support non-blob values, such as an HTTPS URL to a logo file.
-{% endhint %}
-
-## Nested cards
-
-Sometimes, you may come across a vCard file that consists of multiple nested vCards. This, accompanied with the `UID` property, can be connected so that you can make relationships with cards. You can easily access all children cards within a property in your `Card` instance using a property called `NestedCards`. You can easily access the UID of a card via a `UniqueId` property.
-
-{% hint style="warning" %}
-When no `UID` property is specified in the vCard file, it's empty, so it's assumed to have no relationship with any card. Even if they have no UID, they can be nested.
 {% endhint %}
