@@ -4,9 +4,14 @@ description: How do you use it?
 
 # 🖥️ How to use
 
-Using this library is very simple! Just use the `VisualCard` namespace in any piece of code you want to use the library, as in: `using VisualCard;`
+VisualCard provides two types of versit types:
 
-Just use the `CardTools` class that contains:
+* vCard 2.1, 3.0, 4.0, and 5.0
+* vCalendar 1.0 and 2.0
+
+## vCard 2.1 to 5.0
+
+Just use the `CardTools` class found in the `VisualCard` namespace that contains all the necessayr tools to get a list of cards from either a vCard file, a stream, or a string representation:
 
 * `GetCardsFromString(string)`
 * `GetCards(string)`
@@ -140,3 +145,31 @@ To convert deserialized vCard instances to MeCard strings, you can use the `Save
 * `NOTE`
 * `URL`
 * `NICKNAME`
+
+## vCalendar 1.0 and 2.0
+
+{% hint style="warning" %}
+Currently, support for vCalendar is extremely limited, because it doesn't support anything other than events, but we'll add support for all the components soon to maintain conformance.
+{% endhint %}
+
+Additionally, VisualCard can parse calendars, but only after you've installed a separate library, called `VisualCard.Calendar`, that is responsible for handling calendars that are built upon the following vCalendar versions:
+
+* vCalendar 1.0
+* vCalendar 2.0
+
+To parse calendars, you can use the `CalendarTools` class that contains the following functions:
+
+* `GetCalendarsFromString(string)`
+* `GetCalendars(string)`
+* `GetCalendars(StreamReader)`
+
+These functions return the list of cards from multiple contacts that may be detected by the vCard parser. When parsing is done, it returns an array of `Card` instances that hold information about the contact. You can consult the supported parts in the below page:
+
+{% content-ref url="calendar-parts.md" %}
+[calendar-parts.md](calendar-parts.md)
+{% endcontent-ref %}
+
+Just like vCards, you can also save calendars by calling the `SaveTo()` function on a `Calendar` instance that holds information about a calendar you want to save. Currently, it allows you to specify the method of saving:
+
+* `SaveTo()`: Saves this contact to a file path
+* `SaveToString()`: Saves this contact to a string representation
