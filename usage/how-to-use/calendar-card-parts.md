@@ -12,12 +12,7 @@ Normally, calendars in VisualCard have three types of parts that define a calend
 
 In the current version of VisualCard, the following parts are supported:
 
-<table><thead><tr><th width="267">Key</th><th width="169">Type</th><th width="187">Component</th><th width="59">1.0</th><th width="65">2.0</th></tr></thead><tbody><tr><td><code>PRODID</code></td><td>String</td><td>Root</td><td>●</td><td>●</td></tr><tr><td><code>METHOD</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>CALSCALE</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>ATTACH</code></td><td>Array</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>Array</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>COMMENT</code></td><td>Array</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>GEO</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>LOCATION</code></td><td>Array</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>RESOURCES</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>ATTENDEE</code></td><td>Array</td><td>Event, to-do, journal, free/busy, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CREATED</code></td><td>Array</td><td>Event, to-do, or journal</td><td></td><td>●</td></tr><tr><td><code>DCREATED</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DTSTART</code></td><td>Array</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>DTEND</code></td><td>Array</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>DTSTAMP</code></td><td>Array</td><td>Event</td><td></td><td>●</td></tr><tr><td><code>CLASS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>UID</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>ORGANIZER</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>STATUS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>SUMMARY</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>DESCRIPTION</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>TRANSP</code></td><td>String</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>PRIORITY</code></td><td>Integer</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>SEQUENCE</code></td><td>Integer</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr></tbody></table>
-
-The following base types by all the properties that can be put into arrays are supported:
-
-* `HOME`, `WORK`, and `PREF`
-* `X-nonstandard` types
+<table><thead><tr><th width="267">Key</th><th width="169">Type</th><th width="187">Component</th><th width="59">1.0</th><th width="65">2.0</th></tr></thead><tbody><tr><td><code>PRODID</code></td><td>String</td><td>Root</td><td>●</td><td>●</td></tr><tr><td><code>METHOD</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>CALSCALE</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>ATTACH</code></td><td>Array</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>Array</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>COMMENT</code></td><td>Array</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>GEO</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>LOCATION</code></td><td>Array</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>RESOURCES</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>ATTENDEE</code></td><td>Array</td><td>Event, to-do, journal, free/busy, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CREATED</code></td><td>Array</td><td>Event, to-do, or journal</td><td></td><td>●</td></tr><tr><td><code>DCREATED</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DTSTART</code></td><td>Array</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>DTEND</code></td><td>Array</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>DTSTAMP</code></td><td>Array</td><td>Event</td><td></td><td>●</td></tr><tr><td><code>CLASS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>UID</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>ORGANIZER</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>STATUS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>SUMMARY</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>DESCRIPTION</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>TRANSP</code></td><td>String</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>ACTION</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TRIGGER</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TZID</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZURL</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZNAME</code></td><td>Array</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETFROM</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETTO</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>RRULE</code></td><td>String</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>RDATE</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>PRIORITY</code></td><td>Integer</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>SEQUENCE</code></td><td>Integer</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr></tbody></table>
 
 The below sections describe how exactly to parse all the supported types.
 
@@ -92,3 +87,28 @@ You can make use of this feature by invoking the `GetBlobData()` function from t
 {% hint style="danger" %}
 This feature doesn't support non-blob values, such as an HTTPS URL to a logo file.
 {% endhint %}
+
+## Events, To-dos, and more
+
+A calendar instance may contain one or more of the following components nested inside the root calendar component:
+
+* Events
+* To-dos
+* Journals
+* Free/busy instances
+* Timezones
+  * Standard times
+  * Daylight times
+* Event and to-do alarms
+
+You can access this information using their individual properties found in the calendar instance as follows:
+
+* `Events`
+  * `Alarms`
+* `Todos`
+  * `Alarms`
+* `Journals`
+* `FreeBusyList`
+* `TimeZones`
+  * `StandardTimeList`
+  * `DaylightTimeList`
