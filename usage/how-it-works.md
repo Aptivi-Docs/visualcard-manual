@@ -81,7 +81,20 @@ The parser first checks to see if the calendar content is not empty to verify th
 
 Once the parser finishes installing all the values from all the supported keys, VisualCard checks for the below requirements:
 
-<table><thead><tr><th width="164">vCalendar</th><th>Product ID (PRODID)</th></tr></thead><tbody><tr><td>vCard 1.0</td><td>●</td></tr><tr><td>vCard 2.0</td><td>●</td></tr></tbody></table>
+* Root calendar component (after `START:VCALENDAR` before any `START:VCOMPONENT` specifier)
+  * `PRODID` is required in vCalendar v2.0 but not v1.0
+* Events and To-dos (after `START:VEVENT` or `START:VTODO`)
+  * `UID` and `DTSTAMP` properties are required in vCalendar v2.0 but not v1.0
+
+In addition to the above requirements, there are vCalendar 2.0 components that have their own requirements according to the specification:
+
+* Journals and Free/Busy info (after `START:VJOURNAL` or `START:VFREEBUSY`)
+  * `UID` and `DTSTAMP` properties are required
+* Time zone info (after `START:VTIMEZONE` before standard/daylight components)
+  * `TZID` is required
+* Standard and daylight info (after `START:STANDARD` or `START:DAYLIGHT`)
+  * `DTSTART` is required
+  * `TZOFFSETFROM` and `TZOFFSETTO` is required
 
 If the requirements are met, VisualCard returns a new `Calendar` instance that you can fetch its values from using one of the following methods:
 
