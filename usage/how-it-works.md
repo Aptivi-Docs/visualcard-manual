@@ -1,6 +1,6 @@
 ---
-description: How does it work?
 icon: screwdriver
+description: How does it work?
 ---
 
 # How it works
@@ -11,22 +11,13 @@ VisualCard supports contacts and calendars.
 
 When either a string containing a path to the vCard file (`GetCards(string)`) or a string containing the vCard content (`GetCardsFromString(string)`) or a stream containing the vCard content (`GetCards(StreamReader)`) is passed, VisualCard converts the content to a stream first in case we encounter a large vCard file.
 
-VisualCard then attempts to parse all the lines line by line, but first looks for the vCard header at exactly the first line:
+VisualCard then attempts to parse all the lines line by line, but first looks for the vCard header by parsing the property and comparing the property name with `BEGIN` and the value with `VCARD`. Each contact file must begin with this header, and each contact in a single file must have the begin and the end tags. Parsing fails if omitted.
 
-```vcard
-BEGIN:VCARD
-```
+After the begin tag is spotted, it looks for the version in the any line of each contact. If the prefix is `VERSION` and it's either 2.1, 3.0, 4.0, or 5.0, VisualCard appends the card version to the `CardVersion` property of the parser. VisualCard will then keep adding lines of content until the ending tag is spotted, `END:VCARD`, parsing it in the same method as parsing the start.
 
-Each contact file must begin with the above header, and each contact in a single file must have the begin and the end tags. Parsing fails if omitted.
-
-After the begin tag is spotted, it looks for the version in the exact second line of each contact. If it's either one of:
-
-* `VERSION:2.1`
-* `VERSION:3.0`
-* `VERSION:4.0`
-* `VERSION:5.0`
-
-VisualCard appends the card version to the `CardVersion` property of the parser. VisualCard will then keep adding lines of content until the ending tag is spotted, `END:VCARD`.
+{% hint style="info" %}
+You can specify the version anywhere on vCards that use v2.1 or v3.0 of the specification, but this is forbidden in vCard 4.0 and 5.0.
+{% endhint %}
 
 Once the ending tag is seen, VisualCard creates a new instance of the `VcardParser` class containing necessary functions to parse the contact, which causes this library to call `Parse()` on the individual contact parser instance which attempts to process all the keys found in the card content, `CardContent`.
 

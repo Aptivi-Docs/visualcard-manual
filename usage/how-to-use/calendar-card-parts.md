@@ -1,6 +1,6 @@
 ---
-description: How do the calendar parts work in VisualCard?
 icon: calendar
+description: How do the calendar parts work in VisualCard?
 ---
 
 # Calendar Parts
@@ -13,7 +13,7 @@ Normally, calendars in VisualCard have three types of parts that define a calend
 
 In the current version of VisualCard, the following parts are supported:
 
-<table><thead><tr><th width="267">Key</th><th width="169">Type</th><th width="187">Component</th><th width="59">1.0</th><th width="65">2.0</th></tr></thead><tbody><tr><td><code>PRODID</code></td><td>String</td><td>Root</td><td>●</td><td>●</td></tr><tr><td><code>METHOD</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>CALSCALE</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>ATTACH</code></td><td>Array</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>Array</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>COMMENT</code></td><td>Array</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>GEO</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>LOCATION</code></td><td>Array</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>RESOURCES</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>ATTENDEE</code></td><td>Array</td><td>Event, to-do, journal, free/busy, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CREATED</code></td><td>Array</td><td>Event, to-do, or journal</td><td></td><td>●</td></tr><tr><td><code>DCREATED</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DTSTART</code></td><td>Array</td><td>Event, to-do, free/busy, or standard/daylight timezone components</td><td>●</td><td>●</td></tr><tr><td><code>DTEND</code></td><td>Array</td><td>Event or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>DTSTAMP</code></td><td>Array</td><td>Event</td><td></td><td>●</td></tr><tr><td><code>CLASS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>UID</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>ORGANIZER</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>STATUS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>SUMMARY</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>DESCRIPTION</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>TRANSP</code></td><td>String</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>ACTION</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TRIGGER</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TZID</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZURL</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZNAME</code></td><td>Array</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETFROM</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETTO</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>RRULE</code></td><td>String</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>RDATE</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>EXDATE</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>PRIORITY</code></td><td>Integer</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>SEQUENCE</code></td><td>Integer</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>PERCENT-COMPLETION</code></td><td>Integer</td><td>To-do</td><td></td><td>●</td></tr><tr><td><code>COMPLETED</code></td><td>Array</td><td>To-do</td><td>●</td><td>●</td></tr><tr><td><code>DUE</code></td><td>Array</td><td>To-do</td><td>●</td><td>●</td></tr><tr><td><code>DAYLIGHT</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td></td></tr><tr><td><code>AALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>MALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>PALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>RELATED-TO</code></td><td>Array</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr></tbody></table>
+<table><thead><tr><th width="267">Key</th><th width="169">Type</th><th width="187">Component</th><th width="59">1.0</th><th width="65">2.0</th></tr></thead><tbody><tr><td><code>PRODID</code></td><td>String</td><td>Root</td><td>●</td><td>●</td></tr><tr><td><code>METHOD</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>CALSCALE</code></td><td>String</td><td>Root</td><td></td><td>●</td></tr><tr><td><code>ATTACH</code></td><td>Array</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CATEGORIES</code></td><td>Array</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>COMMENT</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>GEO</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>LOCATION</code></td><td>String</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>RESOURCES</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td>●</td></tr><tr><td><code>ATTENDEE</code></td><td>String</td><td>Event, to-do, journal, free/busy, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>CREATED</code></td><td>Array</td><td>Event, to-do, or journal</td><td></td><td>●</td></tr><tr><td><code>DCREATED</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DTSTART</code></td><td>Array</td><td>Event, to-do, free/busy, or standard/daylight timezone components</td><td>●</td><td>●</td></tr><tr><td><code>DTEND</code></td><td>Array</td><td>Event or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>DTSTAMP</code></td><td>Array</td><td>Event</td><td></td><td>●</td></tr><tr><td><code>CLASS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>UID</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>ORGANIZER</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>STATUS</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>SUMMARY</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>DESCRIPTION</code></td><td>String</td><td>Event, to-do, journal, or alarm</td><td>●</td><td>●</td></tr><tr><td><code>TRANSP</code></td><td>String</td><td>Event</td><td>●</td><td>●</td></tr><tr><td><code>ACTION</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TRIGGER</code></td><td>String</td><td>Alarm</td><td></td><td>●</td></tr><tr><td><code>TZID</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZURL</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZNAME</code></td><td>String</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETFROM</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>TZOFFSETTO</code></td><td>Integer</td><td>Timezone</td><td></td><td>●</td></tr><tr><td><code>RRULE</code></td><td>String</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>RDATE</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>EXDATE</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td>●</td></tr><tr><td><code>PRIORITY</code></td><td>Integer</td><td>Event or to-do</td><td></td><td>●</td></tr><tr><td><code>SEQUENCE</code></td><td>Integer</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>PERCENT-COMPLETION</code></td><td>Integer</td><td>To-do</td><td></td><td>●</td></tr><tr><td><code>COMPLETED</code></td><td>Array</td><td>To-do</td><td>●</td><td>●</td></tr><tr><td><code>DUE</code></td><td>Array</td><td>To-do</td><td>●</td><td>●</td></tr><tr><td><code>DAYLIGHT</code></td><td>Array</td><td>Event, to-do, journal, or daylight and standard time zone components</td><td>●</td><td></td></tr><tr><td><code>AALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>DALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>MALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>PALARM</code></td><td>Array</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>RELATED-TO</code></td><td>String</td><td>Event, to-do, or journal</td><td>●</td><td>●</td></tr><tr><td><code>LAST-MODIFIED</code></td><td>Array</td><td>Event, to-do, journal, or time zone</td><td>●</td><td>●</td></tr><tr><td><code>EXRULE</code></td><td>String</td><td>Event or to-do</td><td>●</td><td></td></tr><tr><td><code>RECURRENCE-ID</code></td><td>String</td><td>Event, to-do, or journal</td><td></td><td>●</td></tr><tr><td><code>REPEAT</code></td><td>Integer</td><td>Alarm</td><td>●</td><td>●</td></tr><tr><td><code>DURATION</code></td><td>String</td><td>Event, to-do, or alarm</td><td></td><td>●</td></tr><tr><td><code>REQUEST-STATUS</code></td><td>Array</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>URL</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td>●</td><td>●</td></tr><tr><td><code>TZ</code></td><td>String</td><td>Root</td><td>●</td><td>●</td></tr><tr><td><code>CONTACT</code></td><td>String</td><td>Event, to-do, journal, or free/busy</td><td></td><td>●</td></tr><tr><td><code>RNUM</code></td><td>Integer</td><td>Event or to-do</td><td>●</td><td></td></tr></tbody></table>
 
 The following status types that are allowed in events, to-dos, or journals are:
 
@@ -53,9 +53,13 @@ Additionally, the event or to-do alarm type for a single alarm component can be 
 * `DISPLAY`
 * `EMAIL`
 
-For the `ATTENDEE` property, you can either specify nothing as a type (without typing the `TYPE=` parameter) or specify VCARD and any X-nonstandard type. Same applies for the `AALARM` property, except that it supports only `PCM`, `WAVE`, `AIFF`, and any X-nonstandard type as types.
+For the `ATTENDEE` property, you can either specify nothing as a type (without typing the `TYPE=` parameter) or specify VCARD and any X-nonstandard type. Same applies for the `AALARM` property, except that it supports only `PCM`, `WAVE`, `AIFF`, and any X-nonstandard or IANA type as types.
 
 The below sections describe how exactly to parse all the supported types.
+
+{% hint style="info" %}
+You can access all extra X-named and IANA properties by calling `GetPartsArray`, passing it the `ExtraInfo` type as a generic type argument. You can also get all parsed extra X-named and IANA components using the `Others` property from the root calendar.
+{% endhint %}
 
 ## Strings
 
@@ -70,6 +74,24 @@ This function returns one of the following strings:
 * **A string value**
   * If the string is defined, supported, and is not empty.
 
+When using the above function, it returns an instance of `CardValueInfo<string>` that contains the following properties:
+
+* `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
+  * `Key`: Argument key name
+  * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
+  * `AllValues`: An array of unquoted values
+  * `MatchValue()`: A function that lets you match a value
+* `AltId`: Alternative ID. If it's not specified, it returns `-1`.
+* `ElementTypes`: Card element type (home, work, ...)
+* `ValueType`: Value type (usually set by VALUE=)
+* `Group`: Property group
+* `Value`: A string value
+* `IsPreferred`: Is this part preferred?
+
+You can also use the following functions:
+
+* `HasType()`: Checks to see if this value has a specific type
+
 ## Integers
 
 Integers in vCalendar and VisualCard are the simplest of the types that allow you to input just a number that represents that property. The above table shows all the properties, and those that are listed as an Integer, such as `PRIORITY`, can be get as an integer using a function called `GetInteger()`.
@@ -82,6 +104,24 @@ This function returns one of the following integers:
   * If the integer is specified as -1
 * **An integer value**
   * If the integer is defined and supported.
+
+When using the above function, it returns an instance of `CardValueInfo<double>` that contains the following properties:
+
+* `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
+  * `Key`: Argument key name
+  * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
+  * `AllValues`: An array of unquoted values
+  * `MatchValue()`: A function that lets you match a value
+* `AltId`: Alternative ID. If it's not specified, it returns `-1`.
+* `ElementTypes`: Card element type (home, work, ...)
+* `ValueType`: Value type (usually set by VALUE=)
+* `Group`: Property group
+* `Value`: An integer value
+* `IsPreferred`: Is this part preferred?
+
+You can also use the following functions:
+
+* `HasType()`: Checks to see if this value has a specific type
 
 ## Array of Parts
 
