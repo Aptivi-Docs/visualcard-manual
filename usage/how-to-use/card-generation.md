@@ -1,8 +1,9 @@
 ---
 description: Generating your cards automagically...
+icon: address-card
 ---
 
-# 📇 Card Generation
+# Card Generation
 
 In addition to VisualCard having the most basic card parsing functions, you can now generate cards based on a random name generation function employed by the Textify library that you can consult here:
 

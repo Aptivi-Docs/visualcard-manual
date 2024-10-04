@@ -1,8 +1,9 @@
 ---
 description: How do the calendar parts work in VisualCard?
+icon: calendar
 ---
 
-# 📅 Calendar Parts
+# Calendar Parts
 
 Normally, calendars in VisualCard have three types of parts that define a calendar:
 

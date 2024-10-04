@@ -1,8 +1,9 @@
 ---
 description: How do the card parts work in VisualCard?
+icon: puzzle-piece
 ---
 
-# 🧩 Card Parts
+# Card Parts
 
 Normally, cards in VisualCard have two types of parts that define a contact:
 

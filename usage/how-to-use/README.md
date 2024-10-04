@@ -1,8 +1,9 @@
 ---
 description: How do you use it?
+icon: computer
 ---
 
-# 🖥️ How to use
+# How to use
 
 VisualCard provides two types of versit types:
 

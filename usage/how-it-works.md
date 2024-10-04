@@ -1,8 +1,9 @@
 ---
 description: How does it work?
+icon: screwdriver
 ---
 
-# ⚒️ How it works
+# How it works
 
 VisualCard supports contacts and calendars.
 

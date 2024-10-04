@@ -1,8 +1,9 @@
 ---
 description: Listing all the breaking changes.
+icon: newspaper
 ---
 
-# 🗞️ Breaking Changes
+# Breaking Changes
 
 There are new releases of VisualCard that cause breaking changes, so you'll need to take them into consideration when upgrading your program to use later versions of VisualCard. Here are the version upgrade paths:
 
