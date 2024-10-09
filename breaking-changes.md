@@ -177,3 +177,27 @@ We've introduced the `CardKind` enumeration, so we've decided to make the above 
 The string representation is still available, but moved to the `CardKindStr` property.
 {% endhint %}
 
+## VisualCard v3.0 to v3.1
+
+During the v3.0 upgrade to v3.1, you'll need to consider the following:
+
+### `PropertyInfo` is now more useful
+
+{% code title="Base*PartInfo.cs / *ValueInfo.cs" lineNumbers="true" %}
+```csharp
+public virtual ArgumentInfo[] Arguments { get; internal set; } = [];
+```
+{% endcode %}
+
+The following classes are affected with this change:
+
+* `BaseCardPartInfo`
+* `CardValueInfo`
+* `BaseCalendarPartInfo`
+* `CalendarValueInfo`
+
+The above property has been edited so that it points to the relevant `PropertyInfo` instance that contains the `Arguments` property, which has exactly the same amount of information that you'd obtain from there.
+
+{% hint style="info" %}
+To be able to access this property, you need to access the `Property` value in a card part or a value info class.
+{% endhint %}

@@ -63,7 +63,7 @@ You can access all extra X-named and IANA properties by calling `GetPartsArray`,
 
 ## Strings
 
-Strings in vCalendar and VisualCard are the simplest of the types that allow you to input just text that represent that property. The above table shows all the properties, and those that are listed as a String, such as `CLASS`, can be get as a string using a function called `GetString()`.
+Strings in vCalendar and VisualCard are the simplest of the types that allow you to input just text that represent that property. The above table shows all the properties, and those that are listed as a String, such as `CLASS`, can be get as a string using a function called `GetString()`. You can also get a dictionary of a list of parsed strings using the `Strings` property.
 
 This function returns one of the following strings:
 
@@ -76,11 +76,16 @@ This function returns one of the following strings:
 
 When using the above function, it returns an instance of `CardValueInfo<string>` that contains the following properties:
 
-* `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
-  * `Key`: Argument key name
-  * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
-  * `AllValues`: An array of unquoted values
-  * `MatchValue()`: A function that lets you match a value
+* `Property`: An instance of `PropertyInfo` that shows you a dissection of raw prefix, group, and values. It contains the following properties:
+  * `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
+    * `Key`: Argument key name
+    * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
+    * `AllValues`: An array of unquoted values
+    * `MatchValue()`: A function that lets you match a value
+  * `Value`: Raw value, as it appears on a vCard representation
+  * `Prefix`: Raw prefix, as it appears on a vCard representation
+  * `Group`: Raw group, as it appears on a vCard representation
+  * `NestedGroups`: Nested groups separated by a dot
 * `AltId`: Alternative ID. If it's not specified, it returns `-1`.
 * `ElementTypes`: Card element type (home, work, ...)
 * `ValueType`: Value type (usually set by VALUE=)
@@ -94,7 +99,7 @@ You can also use the following functions:
 
 ## Integers
 
-Integers in vCalendar and VisualCard are the simplest of the types that allow you to input just a number that represents that property. The above table shows all the properties, and those that are listed as an Integer, such as `PRIORITY`, can be get as an integer using a function called `GetInteger()`.
+Integers in vCalendar and VisualCard are the simplest of the types that allow you to input just a number that represents that property. The above table shows all the properties, and those that are listed as an Integer, such as `PRIORITY`, can be get as an integer using a function called `GetInteger()`. You can also get a dictionary of a list of parsed integers using the `Integers` property.
 
 This function returns one of the following integers:
 
@@ -125,7 +130,7 @@ You can also use the following functions:
 
 ## Array of Parts
 
-Parts that can be more than one part (i.e. can be put to an array and can exist more than once per vCard instance) exist in vCard. The above table shows all the properties that are listed as an Array. If they are listed as such, like `ATTENDEE`, you can get it using `GetPartsArray()`.
+Parts that can be more than one part (i.e. can be put to an array and can exist more than once per vCard instance) exist in vCard. The above table shows all the properties that are listed as an Array. If they are listed as such, like `ATTENDEE`, you can get it using `GetPartsArray()`. You can also get a dictionary of a list of parsed parts array lists using the `PartsArray` property.
 
 `GetPartsArray()` is a generic method. This means that you can specify one of the `Info` classes, as long as it represents a valid class that points to a valid part, such as `AttendeeInfo`. In this case, you'll have to call it like this:
 
