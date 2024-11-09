@@ -201,3 +201,33 @@ The above property has been edited so that it points to the relevant `PropertyIn
 {% hint style="info" %}
 To be able to access this property, you need to access the `Property` value in a card part or a value info class.
 {% endhint %}
+
+## VisualCard v3.1 to v3.2
+
+During the v3.1 upgrade to v3.2, you'll need to consider the following:
+
+### `CardValueInfo` and `CalendarValueInfo` merged
+
+{% code title="CardValueInfo.cs" lineNumbers="true" %}
+```csharp
+public class CardValueInfo<TValue> : IEquatable<CardValueInfo<TValue>>
+{
+    (...)
+}
+```
+{% endcode %}
+
+{% code title="CalendarValueInfo.cs" lineNumbers="true" %}
+```csharp
+public class CalendarValueInfo<TValue> : IEquatable<CalendarValueInfo<TValue>>
+{
+    (...)
+}
+```
+{% endcode %}
+
+We have merged the two above classes into the `ValueInfo` class found in the main VisualCard library as we have spotted common properties that are found in both the above classes. As we want to get rid of redundancy, we've merged them together.
+
+{% hint style="info" %}
+You can now use the `ValueInfo` class.
+{% endhint %}

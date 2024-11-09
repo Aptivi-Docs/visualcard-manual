@@ -50,7 +50,7 @@ This function returns one of the following strings:
 You can easily access the card kind using the `CardKindStr` property from a card instance. It's also available as an enumeration value via the `CardKind` property.
 {% endhint %}
 
-When using the above function, it returns an instance of `CardValueInfo<string>` that contains the following properties:
+When using the above function, it returns an instance of `ValueInfo<string>` that contains the following properties:
 
 * `Property`: An instance of `PropertyInfo` that shows you a dissection of raw prefix, group, and values. It contains the following properties:
   * `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
@@ -66,6 +66,7 @@ When using the above function, it returns an instance of `CardValueInfo<string>`
 * `ElementTypes`: Card element type (home, work, ...)
 * `ValueType`: Value type (usually set by VALUE=)
 * `Group`: Property group
+* `NestedGroups`: Nested groups for a property (separated by a dot)
 * `Value`: A string value
 * `IsPreferred`: Is this part preferred?
 
