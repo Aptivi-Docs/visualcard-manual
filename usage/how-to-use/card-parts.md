@@ -74,6 +74,8 @@ You can also use the following functions:
 
 * `HasType()`: Checks to see if this value has a specific type
 
+You can also specify the encoding of `QUOTED-PRINTABLE` to enable support for Unicode characters that may get decoded.
+
 ## Array of Parts
 
 Parts that can be more than one part (i.e. can be put to an array and can exist more than once per vCard instance) exist in vCard. The above table shows all the properties that are listed as an Array. If they are listed as such, like `TEL`, you can get it using `GetPartsArray()`. You can also get a dictionary of a list of parsed parts array lists using the `PartsArray` property.
@@ -111,6 +113,8 @@ Any attempt to specify an incorrect type or enumeration in the second overload o
 {% endhint %}
 
 For preferred parts, their value of the `IsPreferred` property is true, assuming that the `PREF` type exists in such parts.
+
+You can also specify the encoding of `QUOTED-PRINTABLE` to enable support for Unicode characters that may get decoded.
 
 ## Getting a Blob Stream
 
