@@ -48,36 +48,9 @@ This function returns one of the following strings:
 
 {% hint style="info" %}
 You can easily access the card kind using the `CardKindStr` property from a card instance. It's also available as an enumeration value via the `CardKind` property.
-{% endhint %}
-
-When using the above function, it returns an instance of `ValueInfo<string>` that contains the following properties:
-
-* `Property`: An instance of `PropertyInfo` that shows you a dissection of raw prefix, group, and values. It contains the following properties:
-  * `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
-    * `Key`: Argument key name
-    * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
-    * `AllValues`: An array of unquoted values
-    * `MatchValue()`: A function that lets you match a value
-  * `Value`: Raw value, as it appears on a vCard representation
-  * `Prefix`: Raw prefix, as it appears on a vCard representation
-  * `Group`: Raw group, as it appears on a vCard representation
-  * `NestedGroups`: Nested groups separated by a dot
-  * `Encoding`: Property encoding
-  * `Type`: Property type
-  * `ValueType`: Property value type
-* `AltId`: Alternative ID. If it's not specified, it returns `-1`.
-* `ElementTypes`: Card element type (home, work, ...)
-* `ValueType`: Value type (usually set by VALUE=)
-* `Group`: Property group
-* `NestedGroups`: Nested groups for a property (separated by a dot)
-* `Value`: A string value
-* `IsPreferred`: Is this part preferred?
-
-You can also use the following functions:
-
-* `HasType()`: Checks to see if this value has a specific type
 
 You can also specify the encoding of `QUOTED-PRINTABLE` to enable support for Unicode characters that may get decoded.
+{% endhint %}
 
 ## Array of Parts
 

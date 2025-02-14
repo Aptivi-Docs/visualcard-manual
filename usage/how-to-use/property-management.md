@@ -1,6 +1,6 @@
 ---
-description: Editing cards and calendars just got easier
 icon: pen
+description: Editing cards and calendars just got easier
 ---
 
 # Property Management
@@ -16,6 +16,29 @@ VisualCard provides you with property management functions that allow editing ca
 It's recommended to call `Validate()` on cards and/or calendars after you make changes to the property, because all operations (except addition) does not enforce validation.
 {% endhint %}
 
+## Value info
+
+Any function that allows you to get value info of any string or integer property will return an instance of `ValueInfo<string>` or `ValueInfo<double>` that contains the following properties: (Any property marked in <mark style="color:green;">green</mark> means editable)
+
+* <mark style="color:green;">`Arguments`</mark>: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
+  * `Key`: Argument key name
+  * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
+  * `AllValues`: An array of unquoted values
+* <mark style="color:green;">`AltId`</mark>: Alternative ID. If it's not specified, it returns `-1`.
+* <mark style="color:green;">`ElementTypes`</mark>: Card element type (home, work, ...)
+* `Encoding`: Property encoding
+* `Type`: Property type
+* `ValueType`: Value type (usually set by VALUE=)
+* <mark style="color:green;">`Group`</mark>: Property group
+* `NestedGroups`: Nested groups for a property (separated by a dot)
+* <mark style="color:green;">`Value`</mark>: A string or an integer value
+* `IsPreferred`: Is this part preferred?
+
+You can also use the following functions:
+
+* `Arguments.MatchValue()`: A function that lets you match a value
+* `HasType()`: Checks to see if this value has a specific type
+
 ## Adding a property
 
 To add a property to a card and/or a calendar, you can use the following functions:
@@ -28,11 +51,11 @@ The functions all use the property type that you want to add, a raw value that y
 
 ## Editing a property
 
-To edit a property in a card and/or a calendar, you can use the following functions:
+To edit a property in a card and/or a calendar, you can use any of the functions that allows you to get either a string info, an integer info, or an array info. After that, you can set values to the above properties that are marked as green.
 
-* Edit
-
-
+{% hint style="warning" %}
+Because these property value info instances are passed by reference, the edits are instantly saved. You should double check to make sure that you're editing the correct property.
+{% endhint %}
 
 ## Deleting a property
 

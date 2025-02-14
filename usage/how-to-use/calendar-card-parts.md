@@ -74,33 +74,6 @@ This function returns one of the following strings:
 * **A string value**
   * If the string is defined, supported, and is not empty.
 
-When using the above function, it returns an instance of `ValueInfo<string>` that contains the following properties:
-
-* `Property`: An instance of `PropertyInfo` that shows you a dissection of raw prefix, group, and values. It contains the following properties:
-  * `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
-    * `Key`: Argument key name
-    * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
-    * `AllValues`: An array of unquoted values
-    * `MatchValue()`: A function that lets you match a value
-  * `Value`: Raw value, as it appears on a vCalendar representation
-  * `Prefix`: Raw prefix, as it appears on a vCalendar representation
-  * `Group`: Raw group, as it appears on a vCalendar representation
-  * `NestedGroups`: Nested groups separated by a dot
-  * `Encoding`: Property encoding
-  * `Type`: Property type
-  * `ValueType`: Property value type
-* `AltId`: Alternative ID. If it's not specified, it returns `-1`.
-* `ElementTypes`: Card element type (home, work, ...)
-* `ValueType`: Value type (usually set by VALUE=)
-* `Group`: Property group
-* `NestedGroups`: Nested groups for a property (separated by a dot)
-* `Value`: A string value
-* `IsPreferred`: Is this part preferred?
-
-You can also use the following functions:
-
-* `HasType()`: Checks to see if this value has a specific type
-
 ## Integers
 
 Integers in vCalendar and VisualCard are the simplest of the types that allow you to input just a number that represents that property. The above table shows all the properties, and those that are listed as an Integer, such as `PRIORITY`, can be get as an integer using a function called `GetInteger()`. You can also get a dictionary of a list of parsed integers using the `Integers` property.
@@ -113,24 +86,6 @@ This function returns one of the following integers:
   * If the integer is specified as -1
 * **An integer value**
   * If the integer is defined and supported.
-
-When using the above function, it returns an instance of `ValueInfo<double>` that contains the following properties:
-
-* `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
-  * `Key`: Argument key name
-  * `Values`: An array of a tuple that describes the value case sensitivity and the unquoted value
-  * `AllValues`: An array of unquoted values
-  * `MatchValue()`: A function that lets you match a value
-* `AltId`: Alternative ID. If it's not specified, it returns `-1`.
-* `ElementTypes`: Card element type (home, work, ...)
-* `ValueType`: Value type (usually set by VALUE=)
-* `Group`: Property group
-* `Value`: An integer value
-* `IsPreferred`: Is this part preferred?
-
-You can also use the following functions:
-
-* `HasType()`: Checks to see if this value has a specific type
 
 ## Array of Parts
 

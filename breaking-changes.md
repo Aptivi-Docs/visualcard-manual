@@ -272,3 +272,26 @@ We've separated the IANA and the non-standard properties as a result of the abov
 {% hint style="danger" %}
 You can no longer use the `GetPartsArray()` function and the `PartsArray` property to get IANA and non-standard properties. You should use the `GetExtraPartsArray()` function and the `ExtraParts` property instead.
 {% endhint %}
+
+### Separated `PropertyInfo` from `ValueInfo` and base part classes
+
+{% code title="PropertyInfo.cs" lineNumbers="true" %}
+```csharp
+public class PropertyInfo : IEquatable<PropertyInfo?>
+```
+{% endcode %}
+
+`PropertyInfo` used to hold several property information properties that allowed you to get more information about a property, such as a number of arguments.
+
+Over time, while we were making major structural changes to simplify the codebase, `PropertyInfo` was an obstacle that got in our way, so we had to basically move relevant properties to `ValueInfo` and base part classes. The following properties have been moved:
+
+* `AltId`
+* `Group`
+* `NestedGroups`
+* `Arguments`
+* `Encoding`
+* `Type`
+
+{% hint style="info" %}
+The above properties have been moved from `ValueInfo`'s `Property` property and from the base part classes' `Property` property, both of which have been removed, to the `ValueInfo` and the base part classes themselves. For example, if you want to get an encoding from `part` that represents one of the two classes, you can now use `part.Encoding` instead of `part.Property?.Encoding`.
+{% endhint %}
