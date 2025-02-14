@@ -7,9 +7,9 @@ description: How do the calendar parts work in VisualCard?
 
 Normally, calendars in VisualCard have three types of parts that define a calendar:
 
-* Strings (`GetString()`)
-* Integers (`GetInteger()`)
-* Array of parts (`GetPartsArray()`)
+* Strings (`Strings` property and `GetString()` function)
+* Integers (`Integers` property and `GetInteger()` function)
+* Array of parts (`PartsArray` property and `GetPartsArray()` function)
 
 In the current version of VisualCard, the following parts are supported:
 
@@ -58,7 +58,7 @@ For the `ATTENDEE` property, you can either specify nothing as a type (without t
 The below sections describe how exactly to parse all the supported types.
 
 {% hint style="info" %}
-You can access all extra X-named and IANA properties by calling `GetPartsArray`, passing it the `ExtraInfo` type as a generic type argument. You can also get all parsed extra X-named and IANA components using the `Others` property from the root calendar.
+You can access all extra X-named and IANA properties by calling `GetExtraPartsArray`, passing it either the `XNameInfo` or the `ExtraInfo` type as a generic type argument. You can also get all parsed extra X-named and IANA calendar components using the `Others` property from the root calendar.
 {% endhint %}
 
 ## Strings
@@ -86,6 +86,9 @@ When using the above function, it returns an instance of `ValueInfo<string>` tha
   * `Prefix`: Raw prefix, as it appears on a vCalendar representation
   * `Group`: Raw group, as it appears on a vCalendar representation
   * `NestedGroups`: Nested groups separated by a dot
+  * `Encoding`: Property encoding
+  * `Type`: Property type
+  * `ValueType`: Property value type
 * `AltId`: Alternative ID. If it's not specified, it returns `-1`.
 * `ElementTypes`: Card element type (home, work, ...)
 * `ValueType`: Value type (usually set by VALUE=)
@@ -111,7 +114,7 @@ This function returns one of the following integers:
 * **An integer value**
   * If the integer is defined and supported.
 
-When using the above function, it returns an instance of `CardValueInfo<double>` that contains the following properties:
+When using the above function, it returns an instance of `ValueInfo<double>` that contains the following properties:
 
 * `Arguments`: An array of parsed `ArgumentInfo` instances that contains the following properties and functions:
   * `Key`: Argument key name
@@ -180,13 +183,14 @@ This feature doesn't support non-blob values, such as an HTTPS URL to a logo fil
 A calendar instance may contain one or more of the following components nested inside the root calendar component:
 
 * Events
+  * Event alarms
 * To-dos
+  * To-do alarms
 * Journals
 * Free/busy instances
 * Timezones
   * Standard times
   * Daylight times
-* Event and to-do alarms
 
 You can access this information using their individual properties found in the calendar instance as follows:
 
@@ -199,3 +203,31 @@ You can access this information using their individual properties found in the c
 * `TimeZones`
   * `StandardTimeList`
   * `DaylightTimeList`
+
+You can add or remove compatible components to a calendar instance or its compatible parent component to add new information, such as adding new events or event alarms. The following functions are available:
+
+* Events (`AddEvent()`, `DeleteEvent()`)
+  * Event alarms (`AddAlarm()`, `DeleteAlarm()`)
+* To-dos (`AddTodo()`, `DeleteTodo()`)
+  * To-do alarms (`AddAlarm()`, `DeleteAlarm()`)
+* Journals (`AddJournal()`, `DeleteJournal()`)
+* Free/busy instances (`AddFreeBusy()`, `DeleteFreeBusy()`)
+* Timezones (`AddTimeZone()`, `DeleteTimeZone()`)
+  * Standard times (`AddStandardTime()`, `DeleteStandardTime()`)
+  * Daylight times (`AddDaylightTime()`, `DeleteDaylightTime()`)
+
+## Property Management
+
+To manage properties in cards and calendars, refer to this page:
+
+{% content-ref url="property-management.md" %}
+[property-management.md](property-management.md)
+{% endcontent-ref %}
+
+{% hint style="info" %}
+You can create empty calendar instances using the `Calendar` class constructor (and the same is true for calendar components, such as `CalendarAlarm` which you can use to add a new alarm to the calendar using `AddAlarm()` and remove an alarm from the calendar using `RemoveAlarm()`), but you'll have to specify a version of vCalendar to be used, such as 1.0 or 2.0. The simplest way to create a calendar instance with no properties is:
+
+```csharp
+var calendar = new Calendar(new(2, 0));
+```
+{% endhint %}

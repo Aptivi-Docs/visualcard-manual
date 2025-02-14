@@ -10,6 +10,10 @@ VisualCard provides two types of versit types:
 * vCard 2.1, 3.0, 4.0, and 5.0
 * vCalendar 1.0 and 2.0
 
+{% hint style="info" %}
+There are common classes that work on both vCard and vCalendar. They're found in `VisualCard.Common`. There's no need to install it manually, as it's automatically installed as a transitive dependency.
+{% endhint %}
+
 ## vCard 2.1 to 5.0
 
 Just use the `CardTools` class found in the `VisualCard` namespace that contains all the necessayr tools to get a list of cards from either a vCard file, a stream, or a string representation:
@@ -32,16 +36,13 @@ To save contacts, call the `SaveTo()` function on a `Card` instance that holds i
 
 * `SaveTo()`: Saves this contact to a file path
 * `SaveToString()`: Saves this contact to a string representation
+  * You can pass `true` to this function if you want to validate the card prior to saving
 
 {% hint style="info" %}
 On VCard 4.0 and 5.0, `ALTID` is supported on all the compatible types. You can also group the properties by appending a group name and a dot before the actual property.
 {% endhint %}
 
 ## vCalendar 1.0 and 2.0
-
-{% hint style="warning" %}
-Currently, support for vCalendar is extremely limited, because it doesn't support anything other than events, but we'll add support for all the components soon to maintain conformance.
-{% endhint %}
 
 Additionally, VisualCard can parse calendars, but only after you've installed a separate library, called `VisualCard.Calendar`, that is responsible for handling calendars that are built upon the following vCalendar versions:
 
@@ -64,6 +65,7 @@ Just like vCards, you can also save calendars by calling the `SaveTo()` function
 
 * `SaveTo()`: Saves this calemdar to a file path
 * `SaveToString()`: Saves this calendar to a string representation
+  * You can pass `true` to this function if you want to validate the card prior to saving
 
 {% hint style="info" %}
 You can group the properties by appending a group name and a dot before the actual property.
@@ -72,3 +74,11 @@ You can group the properties by appending a group name and a dot before the actu
 ## Clipboard support
 
 If you're developing a clipboard manager, you may want to make it detect that it's a vCard or a vCalendar instance using the clipboard object identifier using the `FPI` constant variable in either `CardTools` or `CalendarTools`.
+
+## Diagnostics
+
+You can enable logging for VisualCard by setting the `EnableLogging` property to `true` and by optionally providing the logging provider using the `AbstractLogger` property. To find out more about the internal workings of this feature, consult the below page:
+
+{% content-ref url="https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/ytZJv37OLeFyPEHQJtyw/" %}
+[Aptivestigate - Manual](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/ytZJv37OLeFyPEHQJtyw/)
+{% endcontent-ref %}

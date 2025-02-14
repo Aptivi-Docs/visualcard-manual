@@ -231,3 +231,44 @@ We have merged the two above classes into the `ValueInfo` class found in the mai
 {% hint style="info" %}
 You can now use the `ValueInfo` class.
 {% endhint %}
+
+## VisualCard v3.2 to v4.0
+
+During the v3.2 upgrade to v4.0, you'll need to consider the following:
+
+### Refactored some common code to the common library
+
+As part of the API refinement that was planned for v4.0, we've migrated the following component-agnostic code to the common library, which is `VisualCard.Common`:
+
+* `ArgumentInfo` \[class]
+* `PropertyInfo` \[class]
+* `RecurrenceParser` \[class]
+* `RecurrenceRule` \[class]
+* `RecurrenceRuleFrequency` \[enum]
+* `VcardCommonTools` -> `CommonTools` \[class]
+* `TimePeriod` \[class]
+* `PartType` \[enum]
+* `ExtraInfo` \[class]
+* `XNameInfo` \[class]
+* `ValueInfo` \[class]
+
+In addition to that, we've introduced the `BasePartInfo` that `BaseCardPartInfo` and `BaseCalendarPartInfo` inherit from to reduce code repetition, such as the X-nonstandard and the extra part info classes that are component-agnostic.
+
+{% hint style="info" %}
+None of the functions have been removed, so all you have to do is to just update the `using` clause.
+{% endhint %}
+
+### Separated IANA and non-standard properties
+
+{% code title="PartsArrayEnum.cs and StringsEnum.cs" lineNumbers="true" %}
+```csharp
+public enum PartsArrayEnum
+public enum StringsEnum
+```
+{% endcode %}
+
+We've separated the IANA and the non-standard properties as a result of the above breaking change related to `VisualCard.Common`, because IANA and non-standard properties can be found in both the card and the calendar instances.
+
+{% hint style="danger" %}
+You can no longer use the `GetPartsArray()` function and the `PartsArray` property to get IANA and non-standard properties. You should use the `GetExtraPartsArray()` function and the `ExtraParts` property instead.
+{% endhint %}

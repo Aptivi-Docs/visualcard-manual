@@ -7,8 +7,8 @@ description: How do the card parts work in VisualCard?
 
 Normally, cards in VisualCard have two types of parts that define a contact:
 
-* Strings (`GetString()`)
-* Array of parts (`GetPartsArray()`)
+* Strings (`Strings` property and `GetString()` function)
+* Array of parts (`PartsArray` property and `GetPartsArray()` function)
 
 In the current version of VisualCard, the following parts are supported:
 
@@ -27,7 +27,7 @@ Here are the extra types that the following properties support:
 The below sections describe how exactly to parse all the supported types.
 
 {% hint style="info" %}
-You can access all extra X-named and IANA properties by calling `GetPartsArray`, passing it the `ExtraInfo` type as a generic type argument.
+You can access all extra X-named and IANA properties by calling `GetExtraPartsArray`, passing it either the `XNameInfo` or the `ExtraInfo` type as a generic type argument.
 {% endhint %}
 
 ## Strings
@@ -62,6 +62,9 @@ When using the above function, it returns an instance of `ValueInfo<string>` tha
   * `Prefix`: Raw prefix, as it appears on a vCard representation
   * `Group`: Raw group, as it appears on a vCard representation
   * `NestedGroups`: Nested groups separated by a dot
+  * `Encoding`: Property encoding
+  * `Type`: Property type
+  * `ValueType`: Property value type
 * `AltId`: Alternative ID. If it's not specified, it returns `-1`.
 * `ElementTypes`: Card element type (home, work, ...)
 * `ValueType`: Value type (usually set by VALUE=)
@@ -132,4 +135,22 @@ Sometimes, you may come across a vCard file that consists of multiple nested vCa
 
 {% hint style="warning" %}
 When no `UID` property is specified in the vCard file, it's empty, so it's assumed to have no relationship with any card. Even if they have no UID, they can be nested.
+{% endhint %}
+
+In addition to accessing all nested cards, you can also perform operations on it, such as addition or deletion, since this property returns a list of nested cards.
+
+## Property Management
+
+To manage properties in cards and calendars, refer to this page:
+
+{% content-ref url="property-management.md" %}
+[property-management.md](property-management.md)
+{% endcontent-ref %}
+
+{% hint style="info" %}
+You can create empty card instances using the `Card` class constructor, but you'll have to specify a version of vCard to be used, such as 2.1, 3.0, 4.0, or 5.0. The simplest way to create a card instance with no properties is:
+
+```csharp
+var card = new Card(new(2, 1));
+```
 {% endhint %}
