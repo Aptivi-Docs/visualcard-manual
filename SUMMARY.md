@@ -7,7 +7,7 @@
 
 * [How to use](usage/how-to-use/README.md)
   * [Card Parts](usage/how-to-use/card-parts.md)
-  * [Calendar Parts](usage/how-to-use/calendar-card-parts.md)
+  * [Calendar Parts](usage/how-to-use/calendar-parts.md)
   * [Property Management](usage/how-to-use/property-management.md)
   * [Parsers](usage/how-to-use/parsers/README.md)
     * [Recurrence Rules](usage/how-to-use/parsers/recurrence-rules.md)

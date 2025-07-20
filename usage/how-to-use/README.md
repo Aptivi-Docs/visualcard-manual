@@ -1,6 +1,6 @@
 ---
-icon: computer
 description: How do you use it?
+icon: computer
 ---
 
 # How to use
@@ -57,8 +57,8 @@ To parse calendars, you can use the `CalendarTools` class that contains the foll
 
 These functions return the list of cards from multiple contacts that may be detected by the vCard parser. When parsing is done, it returns an array of `Card` instances that hold information about the contact. You can consult the supported parts in the below page:
 
-{% content-ref url="calendar-card-parts.md" %}
-[calendar-card-parts.md](calendar-card-parts.md)
+{% content-ref url="calendar-parts.md" %}
+[calendar-parts.md](calendar-parts.md)
 {% endcontent-ref %}
 
 Just like vCards, you can also save calendars by calling the `SaveTo()` function on a `Calendar` instance that holds information about a calendar you want to save. Currently, it allows you to specify the method of saving:
