@@ -22,6 +22,6 @@
 
 ***
 
-* [Report an issue](https://gitlab.com/aptivi/main/VisualCard/-/issues)
-* [Source code](https://gitlab.com/aptivi/main/VisualCard)
+* [Report an issue](https://github.com/Aptivi/VisualCard/issues/new)
+* [Source code](https://github.com/Aptivi/VisualCard)
 * [API Reference](https://aptivi.github.io/VisualCard/)
