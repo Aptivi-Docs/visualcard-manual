@@ -1,26 +1,40 @@
 ---
-icon: newspaper
 description: Listing all the breaking changes.
+icon: newspaper
 ---
 
 # Breaking Changes
 
 There are new releases of VisualCard that cause breaking changes, so you'll need to take them into consideration when upgrading your program to use later versions of VisualCard. Here are the version upgrade paths:
 
-## VisualCard v0.x to v1.0
+***
+
+## <mark style="color:$primary;">VisualCard v0.x to v1.0</mark>
 
 During the v0.x upgrade to v1.0, you'll need to consider the following:
 
-### Main ALTID is now `-1`
+<details>
 
-The main ALTID number used to be `0`, because you could specify it or not in a property and the ALTID support was half-implemented. Now, because of the recent improvements to the parsing techniques that VisualCard uses, you can no longer implement some of the different property instances that have its ALTID value of `0`, such as `N` for name information. All main properties without their positive ALTID values will have their ALTID of `-1`, meaning that it's a main instance. For example, VisualCard will error out when seeing such properties implemented in a contact's vCard like this:
+<summary>Main ALTID is now <code>-1</code></summary>
+
+The main ALTID number used to be `0`, because you could specify it or not in a property and the ALTID support was half-implemented.
+
+Because of recent improvements to the parsing techniques that VisualCard uses, you can no longer implement some of the different property instances that have its ALTID value of `0`, such as `N` for name information.
+
+All main properties without their positive ALTID values will have their ALTID of `-1`, meaning that it's a main instance.
+
+For example, VisualCard will error out when seeing such properties implemented in a contact's vCard like this:
 
 ```
 N:Navasquillo;Neville;Neville\,Nevile;Mr.;Jr.
 N;ALTID=0;LANGUAGE=de:NAVASQUILLO;Neville;Neville\,Nevile;Mr.;Jr.
 ```
 
-### Enforcing the correct types
+</details>
+
+<details>
+
+<summary>Enforcing the correct types</summary>
 
 In earlier versions of VisualCard, it allowed any and all of the types, even those that are not supported in all the RFC documents as specified in the [How to use](usage/how-to-use/) page. Starting from VisualCard v1.0, the following base types are supported:
 
@@ -29,24 +43,32 @@ In earlier versions of VisualCard, it allowed any and all of the types, even tho
 
 The extra types are written in a separate page, [Card Parts](usage/how-to-use/card-parts.md).
 
+{% hint style="info" %}
 If the type that is specified is not supported by a property, such as `warehouse` type in the address property, VisualCard will throw an exception. This will break cards that are generated in a non-standard way.
+{% endhint %}
 
-## VisualCard v1.x to v3.0
+</details>
+
+***
+
+## <mark style="color:$primary;">VisualCard v1.x to v3.0</mark>
 
 During the v1.x upgrade to v3.0, you'll need to consider the following:
 
-### Moved extra features to VisualCard.Extras
+<details>
+
+<summary>Moved extra features to VisualCard.Extras</summary>
 
 ```csharp
 namespace VisualCard.Converters
 {
-    public static class AndroidContactsDb
-    public static class MeCard
+    public static class AndroidContactsDb { }
+    public static class MeCard { }
 }
 
 namespace VisualCard.Extras
 {
-    public static class CardGenerator
+    public static class CardGenerator { }
 }
 ```
 
@@ -59,7 +81,11 @@ We've moved extra features that just make use of the VisualCard base library to 
 You should change the `using` clauses to be able to continue using these extensions.
 {% endhint %}
 
-### `MALARM` array enum name changed
+</details>
+
+<details>
+
+<summary><code>MALARM</code> array enum name changed</summary>
 
 {% code title="CalendarPartsArrayEnum.cs" lineNumbers="true" %}
 ```csharp
@@ -72,7 +98,9 @@ public enum CalendarPartsArrayEnum
 ```
 {% endcode %}
 
-Due to missing parts from the vCalendar 1.0 original specification text output, we've had to change `NoteAlarm`'s name to `MailAlarm` so that it doesn't mislead developers. As a result, `MALARM` is now considered as a proper alarm with mail as alarm method. We've also changed the class name like so:
+Due to missing parts from the vCalendar 1.0 original specification text output, we've had to change `NoteAlarm`'s name to `MailAlarm` so that it doesn't mislead developers. As a result, `MALARM` is now considered as a proper alarm with mail as alarm method.
+
+We've also changed the class name like so:
 
 {% code title="MailAlarmInfo.cs" lineNumbers="true" %}
 ```diff
@@ -88,7 +116,11 @@ You should change all references to the `NoteAlarmInfo` class and to the `NoteAl
 * `MailAlarmInfo`
 {% endhint %}
 
-### Used `DateTimeOffset` in date-related types
+</details>
+
+<details>
+
+<summary>Used <code>DateTimeOffset</code> in date-related types</summary>
 
 {% code title="AnniversaryInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -103,7 +135,11 @@ We've changed the date definitions from `DateTime` to `DateTimeOffset` as there 
 You don't need to do anything unless you do something that breaks the property call.
 {% endhint %}
 
-### Used periods in `RecDateInfo`
+</details>
+
+<details>
+
+<summary>Used periods in <code>RecDateInfo</code></summary>
 
 {% code title="RecDateInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -117,22 +153,28 @@ Recurrence date information can be get from either a date and time pair or a dat
 You'll have to get either a start date or an end date from the array, depending on what you're dealing with, to be able to continue using the recurrence date information.
 {% endhint %}
 
-### Changed how string and integer parts are handled
+</details>
+
+<details>
+
+<summary>Changed how string and integer parts are handled</summary>
 
 {% code title="Card.cs" lineNumbers="true" %}
 ```csharp
-public string GetString(StringsEnum key)
+public string GetString(StringsEnum key) { }
 ```
 {% endcode %}
 
 {% code title="Calendar.cs" lineNumbers="true" %}
 ```csharp
-public string GetString(CalendarStringsEnum key)
-public double GetInteger(CalendarIntegersEnum key)
+public string GetString(CalendarStringsEnum key) { }
+public double GetInteger(CalendarIntegersEnum key) { }
 ```
 {% endcode %}
 
-Amidst the recent improvements that affected how the strings and the integers are returned, we needed to add support for extra properties, type parsing, and value type parsing. As a result, we've changed these functions so that they return the corresponding ValueInfo classes:
+Amidst the recent improvements that affected how the strings and the integers are returned, we needed to add support for extra properties, type parsing, and value type parsing.
+
+As a result, we've changed these functions so that they return the corresponding ValueInfo classes:
 
 * Cards: `CardValueInfo`
 * Calendars: `CalendarValueInfo`
@@ -141,7 +183,11 @@ Amidst the recent improvements that affected how the strings and the integers ar
 Consult the parts documentation for more information as to how to use these class instances.
 {% endhint %}
 
-### `ArgumentInfo` implemented
+</details>
+
+<details>
+
+<summary><code>ArgumentInfo</code> implemented</summary>
 
 {% code title="BaseCardPartInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -155,7 +201,9 @@ public virtual string[]? Arguments { get; internal set; }
 ```
 {% endcode %}
 
-`ArgumentInfo` provided a class instance that allowed you to have a better look at the arguments after either a vCard or a vCalendar has been parsed. The property is still there, but we've changed it to become an array of `ArgumentInfo` so that you can handle the arguments with more care.
+`ArgumentInfo` provided a class instance that allowed you to have a better look at the arguments after either a vCard or a vCalendar has been parsed.
+
+The property is still there, but we've changed it to become an array of `ArgumentInfo` so that you can handle the arguments with more care.
 
 As a result, we've removed the `ArgumentValues` property as it's been replaced with the `ArgumentInfo` class instance.
 
@@ -163,7 +211,11 @@ As a result, we've removed the `ArgumentValues` property as it's been replaced w
 You'll need to change how you handle the `Arguments` property, depending on the purpose. If you're using `ArgumentValues`, stop using it and use the `Arguments` property as the latter handles this exact use case.
 {% endhint %}
 
-### Card kind property changed
+</details>
+
+<details>
+
+<summary>Card kind property changed</summary>
 
 {% code title="Card.cs" lineNumbers="true" %}
 ```csharp
@@ -177,11 +229,17 @@ We've introduced the `CardKind` enumeration, so we've decided to make the above 
 The string representation is still available, but moved to the `CardKindStr` property.
 {% endhint %}
 
-## VisualCard v3.0 to v3.1
+</details>
+
+***
+
+## <mark style="color:$primary;">VisualCard v3.0 to v3.1</mark>
 
 During the v3.0 upgrade to v3.1, you'll need to consider the following:
 
-### `PropertyInfo` is now more useful
+<details>
+
+<summary><code>PropertyInfo</code> is now more useful</summary>
 
 {% code title="Base*PartInfo.cs / *ValueInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -202,11 +260,17 @@ The above property has been edited so that it points to the relevant `PropertyIn
 To be able to access this property, you need to access the `Property` value in a card part or a value info class.
 {% endhint %}
 
-## VisualCard v3.1 to v3.2
+</details>
+
+***
+
+## <mark style="color:$primary;">VisualCard v3.1 to v3.2</mark>
 
 During the v3.1 upgrade to v3.2, you'll need to consider the following:
 
-### `CardValueInfo` and `CalendarValueInfo` merged
+<details>
+
+<summary><code>CardValueInfo</code> and <code>CalendarValueInfo</code> merged</summary>
 
 {% code title="CardValueInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -232,11 +296,17 @@ We have merged the two above classes into the `ValueInfo` class found in the mai
 You can now use the `ValueInfo` class.
 {% endhint %}
 
-## VisualCard v3.2 to v4.0
+</details>
+
+***
+
+## <mark style="color:$primary;">VisualCard v3.2 to v4.0</mark>
 
 During the v3.2 upgrade to v4.0, you'll need to consider the following:
 
-### Refactored some common code to the common library
+<details>
+
+<summary>Refactored some common code to the common library</summary>
 
 As part of the API refinement that was planned for v4.0, we've migrated the following component-agnostic code to the common library, which is `VisualCard.Common`:
 
@@ -258,12 +328,16 @@ In addition to that, we've introduced the `BasePartInfo` that `BaseCardPartInfo`
 None of the functions have been removed, so all you have to do is to just update the `using` clause.
 {% endhint %}
 
-### Separated IANA and non-standard properties
+</details>
+
+<details>
+
+<summary>Separated IANA and non-standard properties</summary>
 
 {% code title="PartsArrayEnum.cs and StringsEnum.cs" lineNumbers="true" %}
 ```csharp
-public enum PartsArrayEnum
-public enum StringsEnum
+public enum PartsArrayEnum { }
+public enum StringsEnum { }
 ```
 {% endcode %}
 
@@ -273,7 +347,11 @@ We've separated the IANA and the non-standard properties as a result of the abov
 You can no longer use the `GetPartsArray()` function and the `PartsArray` property to get IANA and non-standard properties. You should use the `GetExtraPartsArray()` function and the `ExtraParts` property instead.
 {% endhint %}
 
-### Separated `PropertyInfo` from `ValueInfo` and base part classes
+</details>
+
+<details>
+
+<summary>Separated <code>PropertyInfo</code> from <code>ValueInfo</code> and base part classes</summary>
 
 {% code title="PropertyInfo.cs" lineNumbers="true" %}
 ```csharp
@@ -283,7 +361,9 @@ public class PropertyInfo : IEquatable<PropertyInfo?>
 
 `PropertyInfo` used to hold several property information properties that allowed you to get more information about a property, such as a number of arguments.
 
-Over time, while we were making major structural changes to simplify the codebase, `PropertyInfo` was an obstacle that got in our way, so we had to basically move relevant properties to `ValueInfo` and base part classes. The following properties have been moved:
+Over time, while we were making major structural changes to simplify the codebase, `PropertyInfo` was an obstacle that got in our way, so we had to basically move relevant properties to `ValueInfo` and base part classes.
+
+The following properties have been moved:
 
 * `AltId`
 * `Group`
@@ -295,3 +375,5 @@ Over time, while we were making major structural changes to simplify the codebas
 {% hint style="info" %}
 The above properties have been moved from `ValueInfo`'s `Property` property and from the base part classes' `Property` property, both of which have been removed, to the `ValueInfo` and the base part classes themselves. For example, if you want to get an encoding from `part` that represents one of the two classes, you can now use `part.Encoding` instead of `part.Property?.Encoding`.
 {% endhint %}
+
+</details>

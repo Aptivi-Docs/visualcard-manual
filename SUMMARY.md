@@ -2,6 +2,7 @@
 
 * [Welcome!](README.md)
 * [Breaking Changes](breaking-changes.md)
+* [Installation and Upgrade](https://app.gitbook.com/s/Id4bob6wnHvpX4zbVVtI/csharp-libraries/installation-and-upgrade)
 
 ## Usage
 
@@ -18,7 +19,6 @@
   * [Card Generation](usage/extra-features/card-generation.md)
   * [Social Media URIs](usage/extra-features/social-media-uris.md)
   * [QR Code Generation](usage/extra-features/qr-code-generation.md)
-* [How it works](usage/how-it-works.md)
 
 ***
 
