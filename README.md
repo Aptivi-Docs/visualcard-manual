@@ -12,6 +12,12 @@ VisualCard is a library that parses the VCard Files (`.vcf`), whether it's a sin
 Below is the release history of the library:
 
 {% updates format="full" %}
+{% update date="2026-02-15" %}
+## <mark style="color:$primary;">v4.1.2.3</mark>
+
+<mark style="color:yellow;">Updated libraries</mark>
+{% endupdate %}
+
 {% update date="2025-12-01" %}
 ## <mark style="color:$primary;">v4.1.2.2</mark>
 
